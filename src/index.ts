@@ -1,3 +1,15 @@
-import { x } from "./test"
+import express from 'express';
+import morgan from 'morgan';
 
-console.log('hello world', x)
+const app = express();
+app.use(morgan('dev'));
+
+app.get('/', (req, res) => {
+    res.json({ message: 'Hello World!..' });
+});
+
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
