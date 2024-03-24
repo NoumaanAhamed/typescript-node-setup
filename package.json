@@ -1,5 +1,5 @@
 {
-  "name": "external-api",
+  "name": "nodejs-express-typescript-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
     "build": "pnpm clean && swc ./src -d dist --strip-leading-paths",
-    "start": "node --env-file=.env dist/index.js",
+    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node dist/index.js; else node --env-file .env dist/index.js; fi",
     "build:start": "pnpm build && pnpm start",
     "dev": "nodemon --exec ts-node --watch src src/index.ts",
     "lint": "eslint . --ext .ts",
